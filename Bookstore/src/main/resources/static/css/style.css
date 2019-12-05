@@ -10,6 +10,10 @@ hr{
 	
 }
 
+.page-top {
+	margin-top: -70px;
+}
+
 .container {
 	width:90%;
 }
@@ -20,4 +24,18 @@ hr{
 
 .box {
 	border: 1px solid red;
+}
+
+.home-headline{
+		font-family: 'Times New Roman', Times, serif;
+		font-size:24px;
+		color: #fff;
+		margin: auto;
+		text-align: inherit;
+		margin-top: -13px;	
+}
+
+.home-headline span {
+	background-color: #231F20;
+	padding: 5px 20px;
 }
