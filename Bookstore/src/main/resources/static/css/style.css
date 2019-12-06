@@ -31,11 +31,11 @@ hr{
 		font-size:24px;
 		color: #fff;
 		margin: auto;
-		text-align: inherit;
+		text-align: justify;
 		margin-top: -13px;	
 }
 
 .home-headline span {
 	background-color: #231F20;
-	padding: 5px 20px;
+	padding: 5px 22px;
 }

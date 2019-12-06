@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
 
-<title>Navbar Template for Bootstrap</title>
+<title>ComicBook Store</title>
 
 <!-- Bootstrap core CSS -->
 <link href="/css/bootstrap.min.css" rel="stylesheet" />
@@ -20,44 +20,36 @@
 </head>
 
 <body>
+<div style="background-image: url('/image/pozadina.jpg'); ">
 	<div class="page-top"
 		style="width: 100%; height: 20px; background-color: #f46b42;"></div>
 	<!-- Static navbar -->
 	<nav class="navbar navbar-default navbar-inverse">
 		<div class="container-fluid">
 			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed"
-					data-toggle="collapse" data-target="#navbar" aria-expanded="false"
-					aria-controls="navbar">
-					<span class="sr-only">Toggle navigation</span> <span
-						class="icon-bar"></span> <span class="icon-bar"></span> <span
-						class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="#">Project name</a>
+				<a class="navbar-brand" href="#">COMIC STORE</a>
 			</div>
-			<div id="navbar" class="navbar-collapse collapse">
-				<ul class="nav navbar-nav">
-					<li class="active"><a href="#">Home</a></li>
-					<li><a href="#">About</a></li>
-					<li><a href="#">Contact</a></li>
+			<div id="navbar">
+				<ul class="nav navbar-nav navbar-left">
 					<li class="dropdown"><a href="#" class="dropdown-toggle"
 						data-toggle="dropdown" role="button" aria-haspopup="true"
-						aria-expanded="false">Dropdown <span class="caret"></span></a>
+						aria-expanded="false">Books <span class="caret"></span></a>
 						<ul class="dropdown-menu">
-							<li><a href="#">Action</a></li>
-							<li><a href="#">Another action</a></li>
-							<li><a href="#">Something else here</a></li>
-							<li role="separator" class="divider"></li>
-							<li class="dropdown-header">Nav header</li>
-							<li><a href="#">Separated link</a></li>
-							<li><a href="#">One more separated link</a></li>
+							<li><a href="#">Browse Books</a></li>
+							<li><a href="#">Store hours &#38; Directions</a></li>
+							<li><a href="#">FAQ</a></li>
 						</ul></li>
+						<form class="navbar-form">
+						<div class="form-group">
+						  <input type="text" name="keyword" class="form-control" placeholder="Book title" />
+						</div>
+						<button type="submit" class="btn btn-default"> Search </button>
+						</form>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
-					<li class="active"><a href="./">Default <span
-							class="sr-only">(current)</span></a></li>
-					<li><a href="../navbar-static-top/">Static top</a></li>
-					<li><a href="../navbar-fixed-top/">Fixed top</a></li>
+					<li><a href="#">SHOPPING CART</a></li>
+					<li><a href="#">MY ACCOUNT</a></li>
+					<li><a href="#">LOGOUT</a></li>
 				</ul>
 			</div>
 			<!--/.nav-collapse -->
@@ -88,35 +80,32 @@
 							<div class="carousel-inner" role="listbox">
 								<div class="item active">
 									<img
-										src="http://lorempixel.com/output/sports-q-c-1600-500-1.jpg"
+										src="/image/slider1.jpg" 
 										alt="..." />
 									<div class="carousel-caption">
-										<h4>First Thumbnail Label</h4>
-										<p>Contrary to popular belief, Lorem Ipsum is not simply
-											random text. It has roots in a piece of classical Latin
-											literature from 45 BC, making it over 2000 years old.</p>
+										<h4>So what did you do, Warner Bros ? </h4>
+										<p>You were not satisfied with the masses you created with man of steel and bvs, these movies did not receive wide acclaim and did not gross out the animal you threw your future plans fucked. man of steel was released in 2013, the second film is not even mentioned even after 2020, which is the main prestige character of your universe.
+										.</p>
 									</div>
 								</div>
 								<div class="item">
 									<img
-										src="http://lorempixel.com/output/sports-q-c-1600-500-2.jpg"
+										src="/image/slider2.jpg"
 										alt="..." />
 									<div class="carousel-caption">
-										<h4>First Thumbnail Label</h4>
-										<p>Contrary to popular belief, Lorem Ipsum is not simply
-											random text. It has roots in a piece of classical Latin
-											literature from 45 BC, making it over 2000 years old.</p>
+										<h4>Disney Plus has lots of Marvel movies to stream – here are our top 10 picks !</h4>
+										<p>Disney Plus launched with a ton of films to watch from its Marvel Cinematic Universe. Marve’s MCU first launched in 2008 with Iron Man. Since then, over 20 films in the MCU have been huge box office hits, including the biggest one of all time with 2019’s Avengers: Endgame. But which Disney Plus Marvel movies are the best?
+										</p>
 									</div>
 								</div>
 								<div class="item">
 									<img
-										src="http://lorempixel.com/output/sports-q-c-1600-500-3.jpg"
+										src="/image/slider3.jpg"
 										alt="..." />
 									<div class="carousel-caption">
-										<h4>First Thumbnail Label</h4>
-										<p>Contrary to popular belief, Lorem Ipsum is not simply
-											random text. It has roots in a piece of classical Latin
-											literature from 45 BC, making it over 2000 years old.</p>
+										<h4>What if Saurfang had stopped Sylvanas from Burning Teldrassil ?</h4>
+										<p>With Battle for Azeroth just on the horizon, Pre-Patch is here and everyone is getting their first taste of what can be expected in the newest expansion. Besides the stat-squish the pre-patch brought, we also got some of the introduction to the Battle for Azeroth story line. SPOILER ALERT, Sylvanas is hell on wheels
+										.</p>
 									</div>
 								</div>
 								...
@@ -185,72 +174,78 @@
 				<!-- Wrapper for slides -->
 				<div class="carousel-inner" role="listbox">
 					<div class="item active">
-						<div class="row">
-							<div class="col-xs-2">
-								<img class="img-responsive" src="/image/raven.jpg" />
+						<img src="/image/shelf.png" class="img-responsive" />
+						<div class="carousel-caption">
+							<div class="row">
+								<div class="col-xs-2">
+									<img class="img-responsive" src="/image/raven.jpg" />
+								</div>
+								<div class="col-xs-2">
+									<img class="img-responsive" src="/image/marvel1.jpg" />
+								</div>
+								<div class="col-xs-2">
+									<img class="img-responsive" src="/image/marvel2.jpg" />
+								</div>
+								<div class="col-xs-2">
+									<img class="img-responsive" src="/image/marvel3.jpg" />
+								</div>
+								<div class="col-xs-2">
+									<img class="img-responsive" src="/image/wow.png" />
+								</div>
+								<div class="col-xs-2">
+									<img class="img-responsive" src="/image/dc.jpg" />
+								</div>
 							</div>
-							<div class="col-xs-2">
-								<img class="img-responsive" src="/image/marvel1.jpg" />
-							</div>
-							<div class="col-xs-2">
-								<img class="img-responsive" src="/image/marvel2.jpg" />
-							</div>
-							<div class="col-xs-2">
-								<img class="img-responsive" src="/image/marvel3.jpg" />
-							</div>
-							<div class="col-xs-2">
-								<img class="img-responsive" src="/image/wow.png" />
-							</div>
-							<div class="col-xs-2">
-								<img class="img-responsive" src="/image/dc.jpg" />
-							</div>
-
 						</div>
 					</div>
 					<div class="item">
-						<div class="row">
-							<div class="col-xs-2">
-								<img class="img-responsive" src="/image/cuvari.jpg" />
+						<img src="/image/shelf.png" class="img-responsive" />
+						<div class="carousel-caption">
+							<div class="row">
+								<div class="col-xs-2">
+									<img class="img-responsive" src="/image/cuvari.jpg" />
+								</div>
+								<div class="col-xs-2">
+									<img class="img-responsive" src="/image/flash1.jpg" />
+								</div>
+								<div class="col-xs-2">
+									<img class="img-responsive" src="/image/hela.jpg" />
+								</div>
+								<div class="col-xs-2">
+									<img class="img-responsive" src="/image/hela1.png" />
+								</div>
+								<div class="col-xs-2">
+									<img class="img-responsive" src="/image/hela2.jpg" />
+								</div>
+								<div class="col-xs-2">
+									<img class="img-responsive" src="/image/ivy1.jpg" />
+								</div>
 							</div>
-							<div class="col-xs-2">
-								<img class="img-responsive" src="/image/flash1.jpg" />
-							</div>
-							<div class="col-xs-2">
-								<img class="img-responsive" src="/image/hela.jpg" />
-							</div>
-							<div class="col-xs-2">
-								<img class="img-responsive" src="/image/hela1.png" />
-							</div>
-							<div class="col-xs-2">
-								<img class="img-responsive" src="/image/hela2.jpg" />
-							</div>
-							<div class="col-xs-2">
-								<img class="img-responsive" src="/image/ivy1.jpg" />
-							</div>
-
 						</div>
 					</div>
 					<div class="item">
-						<div class="row">
-							<div class="col-xs-2">
-								<img class="img-responsive" src="/image/thor1.jpg" />
+						<img src="/image/shelf.png" class="img-responsive" />
+						<div class="carousel-caption">
+							<div class="row">
+								<div class="col-xs-2">
+									<img class="img-responsive" src="/image/thor1.jpg" />
+								</div>
+								<div class="col-xs-2">
+									<img class="img-responsive" src="/image/zatana.jpg" />
+								</div>
+								<div class="col-xs-2">
+									<img class="img-responsive" src="/image/zatana1.jpg" />
+								</div>
+								<div class="col-xs-2">
+									<img class="img-responsive" src="/image/zatana2.jpg" />
+								</div>
+								<div class="col-xs-2">
+									<img class="img-responsive" src="/image/marvel2.jpg" />
+								</div>
+								<div class="col-xs-2">
+									<img class="img-responsive" src="/image/dc.jpg" />
+								</div>
 							</div>
-							<div class="col-xs-2">
-								<img class="img-responsive" src="/image/zatana.jpg" />
-							</div>
-							<div class="col-xs-2">
-								<img class="img-responsive" src="/image/zatana1.jpg" />
-							</div>
-							<div class="col-xs-2">
-								<img class="img-responsive" src="/image/zatana2.jpg" />
-							</div>
-							<div class="col-xs-2">
-								<img class="img-responsive" src="/image/marvel2.jpg" />
-							</div>
-							<div class="col-xs-2">
-								<img class="img-responsive" src="/image/dc.jpg" />
-							</div>
-
 						</div>
 					</div>
 
@@ -275,7 +270,7 @@
 	<!-- END OF CONTAINER  -->
 
 
-
+</div>
 
 
 
