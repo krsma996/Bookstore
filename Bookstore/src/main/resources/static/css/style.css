@@ -52,5 +52,10 @@ hr{
 
 .section-headline span {
 	background-color: #231F20;
-	padding: 5px 22px;
+	padding: 10px 20px;
+	position: relative;
+	left: 500px;
+	bottom: -95px;
+	
+	
 }
