@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
 
 
 @SpringBootApplication
-@ComponentScan(basePackages = {"com.bookstore"} )
+@ComponentScan(basePackages = {"com.bookstore.controller"} )
 @Configuration
 @EnableAutoConfiguration
 public class BookstoreApplication {
