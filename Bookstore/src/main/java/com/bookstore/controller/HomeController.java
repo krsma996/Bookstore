@@ -19,6 +19,7 @@ import com.bookstore.service.impl.UserSecurityService;
 
 @Controller
 public class HomeController {
+
 	@Autowired
 	private UserService userService;
 	
@@ -48,10 +49,11 @@ public class HomeController {
 		PasswordResetToken passToken = userService.getPasswordResetToken(token);
 
 		if (passToken == null) {
-			String message = "Invalid token.";
+			String message = "Invalid Token.";
 			model.addAttribute("message", message);
 			return "redirect:/badRequest";
 		}
+
 		User user = passToken.getUser();
 		String username = user.getUsername();
 

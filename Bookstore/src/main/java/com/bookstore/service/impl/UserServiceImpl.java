@@ -9,11 +9,10 @@ import com.bookstore.repository.PasswordResetTokenRepository;
 import com.bookstore.service.UserService;
 
 @Service
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl implements UserService{
 	
 	@Autowired
 	private PasswordResetTokenRepository passwordResetTokenRepository;
-	
 	
 	@Override
 	public PasswordResetToken getPasswordResetToken(final String token) {
@@ -22,8 +21,9 @@ public class UserServiceImpl implements UserService {
 	
 	@Override
 	public void createPasswordResetTokenForUser(final User user, final String token) {
-		final PasswordResetToken myToken = new PasswordResetToken(token,user);
+		final PasswordResetToken myToken = new PasswordResetToken(token, user);
 		passwordResetTokenRepository.save(myToken);
 	}
 
 }
+
