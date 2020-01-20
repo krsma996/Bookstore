@@ -19,35 +19,34 @@ import com.bookstore.utility.SecurityUtility;
 
 
 @SpringBootApplication
-@ComponentScan(basePackages = {"com.bookstore.controller", "com.bookstore",} )
+@ComponentScan(basePackages = {"com.bookstore", "com.bookstore.controller"} )
 @Configuration
 @EnableAutoConfiguration
 public class BookstoreApplication implements CommandLineRunner {
 
 	@Autowired
 	private UserService userService;
-	
+
 	public static void main(String[] args) {
 		SpringApplication.run(BookstoreApplication.class, args);
 	}
 	
 	@Override
-		public void run(String... args) throws Exception{
-		    User user1 = new User();
-		    user1.setFirstName("Nikola");
-		    user1.setLastName("Krsmanovic");
-		    user1.setUsername("n");
-		    user1.setPassword(SecurityUtility.passwordEncoder().encode("p"));
-		    user1.setEmail("nikolakrsmanovic223@gmail.com");
-		    Set<UserRole> userRoles = new HashSet<>();
-		    Role role1 = new Role();
-		    role1.setRoleId(1);
-		    role1.setName("ROLE_USER");
-		    userRoles.add(new UserRole(user1,role1));
-		    
-		    
-		    userService.createUser(user1, userRoles);
+	public void run(String... args) throws Exception {
+		User user1 = new User();
+		user1.setFirstName("Nikola");
+		user1.setLastName("Krsmanovic");
+		user1.setUsername("n");
+		user1.setPassword(SecurityUtility.passwordEncoder().encode("p"));
+		user1.setEmail("nikolakrsmanovic223@gmail.com");
+		Set<UserRole> userRoles = new HashSet<>();
+		Role role1= new Role();
+		role1.setRoleId(1);
+		role1.setName("ROLE_USER");
+		userRoles.add(new UserRole(user1, role1));
+		
+		userService.createUser(user1, userRoles);
 	}
-	
-	
 }
+
+
