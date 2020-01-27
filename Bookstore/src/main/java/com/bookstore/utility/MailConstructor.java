@@ -11,22 +11,21 @@ import com.bookstore.domain.User;
 
 @Component
 public class MailConstructor {
-
 	@Autowired
 	private Environment env;
 	
 	public SimpleMailMessage constructResetTokenEmail(
-			String contextPath, Locale locale,String token, User user, String password
-			){
+			String contextPath, Locale locale, String token, User user, String password
+			) {
 		
-		String url = contextPath ="/NewUser?token="+token;
-		String message = "/nPlease click on this link to verify your email and edit your personal information. Your password : \n"+password;
+		String url = contextPath + "/newUser?token="+token;
+		String message = " \nPlease click on this link to verify your email and edit your personal information. Your password is: \n"+password;
 		SimpleMailMessage email = new SimpleMailMessage();
-	    email.setTo(user.getEmail());
-	    email.setSubject("ComicBook Store - New User");
-	    email.setText(url+message);
-	    email.setFrom(env.getProperty("support.email"));
-	    return email;
+		email.setTo(user.getEmail());
+		email.setSubject("ComicBook Store - New User");
+		email.setText(url+message);
+		email.setFrom(env.getProperty("support.email"));
+		return email;
+		
 	}
-	
 }

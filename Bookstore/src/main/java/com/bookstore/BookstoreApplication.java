@@ -6,10 +6,7 @@ import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
 
 import com.bookstore.domain.User;
 import com.bookstore.domain.security.Role;
@@ -17,13 +14,9 @@ import com.bookstore.domain.security.UserRole;
 import com.bookstore.service.UserService;
 import com.bookstore.utility.SecurityUtility;
 
-
 @SpringBootApplication
-@ComponentScan(basePackages = {"com.bookstore", "com.bookstore.controller"} )
-@Configuration
-@EnableAutoConfiguration
 public class BookstoreApplication implements CommandLineRunner {
-
+	
 	@Autowired
 	private UserService userService;
 
@@ -48,5 +41,3 @@ public class BookstoreApplication implements CommandLineRunner {
 		userService.createUser(user1, userRoles);
 	}
 }
-
-
