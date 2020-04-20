@@ -36,10 +36,10 @@ public class User implements UserDetails{
 	private String email;
 	private String phone;
 	private boolean enabled=true;
-    @OneToMany(mappedBy = "user" , cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JsonIgnore
-	private Set<UserRole> userRoles = new HashSet<>();
 	
+	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JsonIgnore
+	private Set<UserRole> userRoles = new HashSet<>();
 	
 	public Long getId() {
 		return id;
@@ -87,7 +87,6 @@ public class User implements UserDetails{
 	public void setEnabled(boolean enabled) {
 		this.enabled = enabled;
 	}
-	
 	public Set<UserRole> getUserRoles() {
 		return userRoles;
 	}
@@ -98,6 +97,7 @@ public class User implements UserDetails{
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		Set<GrantedAuthority> authorites = new HashSet<>();
 		userRoles.forEach(ur -> authorites.add(new Authority(ur.getRole().getName())));
+		
 		return authorites;
 	}
 	@Override
@@ -115,11 +115,11 @@ public class User implements UserDetails{
 		// TODO Auto-generated method stub
 		return true;
 	}
-
+	
 	@Override
 	public boolean isEnabled() {
 		return enabled;
 	}
 	
+	
 }
-
