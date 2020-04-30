@@ -20,14 +20,14 @@ import com.bookstore.utility.SecurityUtility;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Autowired
 	private Environment env;
-	
+
 	@Autowired
 	private UserSecurityService userSecurityService;
-	
+
 	private BCryptPasswordEncoder passwordEncoder() {
 		return SecurityUtility.passwordEncoder();
 	}
-	
+
 	private static final String[] PUBLIC_MATCHERS = {
 			"/css/**",
 			"/js/**",
@@ -38,9 +38,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			"/login",
 			"/fonts/**",
 			"/bookshelf",
-			"/bookDetail/**"
+			"/bookDetail/**",
+			
 	};
-	
+
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http
@@ -48,10 +49,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		/*	antMatchers("/**").*/
 			antMatchers(PUBLIC_MATCHERS).
 			permitAll().anyRequest().authenticated();
-		
+
 		http
 			.csrf().disable().cors().disable()
-			.formLogin().failureUrl("/login?error").defaultSuccessUrl("/")
+			.formLogin().failureUrl("/login?error")
+			/*.defaultSuccessUrl("/")*/
 			.loginPage("/login").permitAll()
 			.and()
 			.logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
@@ -59,10 +61,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			.and()
 			.rememberMe();
 	}
-	
+
 	@Autowired
 	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
 		auth.userDetailsService(userSecurityService).passwordEncoder(passwordEncoder());
 	}
-	
+
 }

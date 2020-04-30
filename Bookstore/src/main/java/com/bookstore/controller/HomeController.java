@@ -1,6 +1,5 @@
 package com.bookstore.controller;
 
-
 import java.security.Principal;
 import java.util.Arrays;
 import java.util.HashSet;
@@ -51,10 +50,10 @@ public class HomeController {
 	
 	@Autowired
 	private UserSecurityService userSecurityService;
-
+	
 	@Autowired
 	private BookService bookService;
-	
+
 	@RequestMapping("/")
 	public String index() {
 		return "index";
@@ -78,25 +77,23 @@ public class HomeController {
 	public String bookDetail(
 			@PathParam("id") Long id, Model model, Principal principal
 			) {
-		if(principal !=null) {
+		if(principal != null) {
 			String username = principal.getName();
 			User user = userService.findByUsername(username);
 			model.addAttribute("user", user);
 		}
 		
 		Book book = bookService.findOne(id);
+		
 		model.addAttribute("book", book);
+		
 		List<Integer> qtyList = Arrays.asList(1,2,3,4,5,6,7,8,9,10);
 		
-		model.addAttribute("qtyList",qtyList);
-		model.addAttribute("qtyt",1);
+		model.addAttribute("qtyList", qtyList);
+		model.addAttribute("qty", 1);
 		
 		return "bookDetail";
-		
 	}
-	
-	
-	
 
 	@RequestMapping("/forgetPassword")
 	public String forgetPassword(
@@ -134,6 +131,31 @@ public class HomeController {
 		
 		
 		return "myAccount";
+	}
+	
+	@RequestMapping("/myProfile")
+	public String myProfile(Model model, Principal principal) {
+		User user = userService.findByUsername(principal.getName());
+		/*
+		 * model.addAttribute("user", user);
+		 * model.addAttribute("userPaymentList",user.getUserPaymentList());
+		 * model.addAttribute("userShippingList",user.getUserShippingList());
+		 * model.addAttribute("orderList", user.getOrderList());
+		 */
+		/*
+		 * UserShipping userShipping = new userShipping();
+		 * model.addAttribute("userShipping",userShipping);
+		 * 
+		 * model.addAttribute("listOfCreditCards", true);
+		 * model.addAttribute("listOfShippingAdresses",true);
+		 * 
+		 * List<String> stateList = USConstants.listOfUSStatesCode;
+		 * Collection.sort(statelist); model.addAttribute("statelist", statelist);
+		 */
+		model.addAttribute("classActiveEdit", true);
+		
+		return "myProfile";
+		
 	}
 	
 	@RequestMapping(value="/newUser", method = RequestMethod.POST)
@@ -215,4 +237,7 @@ public class HomeController {
 		model.addAttribute("classActiveEdit", true);
 		return "myProfile";
 	}
+	
+	
+	
 }
