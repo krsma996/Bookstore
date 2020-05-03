@@ -18,7 +18,7 @@ public class UserPayment {
 	private String type;
 	private String cardName;
 	private String cardNumber;
-	private int expiryMounth;
+	private int expiryMonth;
 	private int expiryYear;
 	private int cvc;
 	private String holderName;
@@ -64,12 +64,14 @@ public class UserPayment {
 		this.cardNumber = cardNumber;
 	}
 
-	public int getExpiryMounth() {
-		return expiryMounth;
+	
+
+	public int getExpiryMonth() {
+		return expiryMonth;
 	}
 
-	public void setExpiryMounth(int expiryMounth) {
-		this.expiryMounth = expiryMounth;
+	public void setExpiryMonth(int expiryMonth) {
+		this.expiryMonth = expiryMonth;
 	}
 
 	public int getExpiryYear() {
