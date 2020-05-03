@@ -236,17 +236,11 @@ public class HomeController {
 			Model model, Principal principal
 			) {
 		User user = userService.findByUsername(principal.getName());
-		model.addAttribute("user", user);
-		
+		model.addAttribute("user", user);	
 		model.addAttribute("addNewShippingAdress", true);
 		model.addAttribute("classActiveShipping", true);
-		
-		
 		UserShipping userShipping = new UserShipping();
-
 		model.addAttribute("userShipping", userShipping);
-
-		
 		List<String> stateList = USConstants.listOfUSStatesCode;
 		Collections.sort(stateList);
 		model.addAttribute("stateList", stateList);
