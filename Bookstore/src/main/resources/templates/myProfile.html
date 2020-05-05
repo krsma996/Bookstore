@@ -154,7 +154,7 @@
 													</tr>
 												</thead>
 												<tbody>
-													<tr th:each="userPayment : ${userPaymentlist}">
+													<tr th:each="userPayment : ${userPaymentList}">
 														<td><input type="radio" name="defaultUserPaymentId"
 															th:value="${userPayment.id}"
 															th:checked="${userPayment.defaultPayment}" /></td>
@@ -253,7 +253,7 @@
 													<img src="/image/creditcard.png" class="img-responsive" /><br />
 													<div class="form-group">
 														<label for="cardType">* Select Card Type:</label>
-														<select class="form-controll" id="cardType" th:name="type" th:value="${userPayment.type}">
+														<select class="form-control" id="cardType" th:name="type" th:value="${userPayment.type}">
 															<option value="visa">Visa</option>
 															<option value="mastercard">Mastercard</option>
 															<option value="discover">Discover</option>

@@ -11,7 +11,7 @@ import javax.persistence.OneToOne;
 
 @Entity
 public class UserPayment {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
@@ -22,14 +22,13 @@ public class UserPayment {
 	private int expiryYear;
 	private int cvc;
 	private String holderName;
-	private boolean defaultPaymenyt;
-	
+	private boolean defaultPayment;
 	
 	@ManyToOne
 	@JoinColumn(name="user_id")
 	private User user;
 	
-	@OneToOne(cascade = CascadeType.ALL, mappedBy = "userPayment" )
+	@OneToOne(cascade = CascadeType.ALL, mappedBy = "userPayment")
 	private UserBilling userBilling;
 
 	public Long getId() {
@@ -64,8 +63,6 @@ public class UserPayment {
 		this.cardNumber = cardNumber;
 	}
 
-	
-
 	public int getExpiryMonth() {
 		return expiryMonth;
 	}
@@ -98,12 +95,12 @@ public class UserPayment {
 		this.holderName = holderName;
 	}
 
-	public boolean isDefaultPaymenyt() {
-		return defaultPaymenyt;
+	public boolean isDefaultPayment() {
+		return defaultPayment;
 	}
 
-	public void setDefaultPaymenyt(boolean defaultPaymenyt) {
-		this.defaultPaymenyt = defaultPaymenyt;
+	public void setDefaultPayment(boolean defaultPayment) {
+		this.defaultPayment = defaultPayment;
 	}
 
 	public User getUser() {
@@ -121,7 +118,6 @@ public class UserPayment {
 	public void setUserBilling(UserBilling userBilling) {
 		this.userBilling = userBilling;
 	}
-
 	
 	
 }
