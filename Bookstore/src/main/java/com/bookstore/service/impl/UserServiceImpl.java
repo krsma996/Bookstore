@@ -81,12 +81,9 @@ public class UserServiceImpl implements UserService{
 		userPayment.setDefaultPayment(true);
 		userBilling.setUserPayment(userPayment);
 		user.getUserPaymentList().add(userPayment);
+		
 		save(user);
 		
 	}
-	
-	//Update info
-	
-	
 
 }
