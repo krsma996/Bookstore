@@ -290,9 +290,57 @@ public class HomeController {
 		
 		return "myProfile";
 		
-		
-		
-		
+
+	}
+	
+	@RequestMapping( value="/setDefaultPayment",method=RequestMethod.POST)
+	public String setDefaultPayment(
+			 @ModelAttribute("defaultUserPaymentId") Long defaultPaymentId, Principal principal, Model model
+			
+			) {
+		 User user = userService.findByUsername(principal.getName());
+		 userService.setDefaultPayment(defaultPaymentId,user);
+		 
+		 
+		 model.addAttribute("user", user);
+		 
+		 model.addAttribute("listOfCreditCards", true);
+		 model.addAttribute("classActiveBilling", true);
+		 model.addAttribute("listOfShippingAdresses", true);
+		 model.addAttribute("userPaymentList", user.getUserPaymentList());
+		 model.addAttribute("userShippingList", user.getUserShippingList());
+		 
+		 
+		 
+		 
+		 return "myProfile";
+	}
+	
+	
+	
+	
+	
+	@RequestMapping("/removeCreditCard")
+	public String removeCreditCard(
+			 @ModelAttribute("id") Long creditCard, Principal principal, Model model
+			
+			) {
+		 User user = userService.findByUsername(principal.getName());
+		 UserPayment  userPayment = userPaymentService.findById(creditCard);
+		 if(user.getId()!= userPayment.getUser().getId()) {
+			 return "badRequestPage";
+		 }else {
+			 model.addAttribute("user",user);
+			  userPaymentService.removeById(creditCard);
+			 
+			 model.addAttribute("listOfCreditCards", true);
+			 model.addAttribute("classActiveBilling", true);
+			 model.addAttribute("listOfShippingAdresses", true);
+			 model.addAttribute("userPaymentList", user.getUserPaymentList());
+			 model.addAttribute("userShippingList", user.getUserShippingList());
+			 
+			 return "myProfile";
+ 		 }
 	}
 	
 	
@@ -308,16 +356,17 @@ public class HomeController {
 		UserShipping userShipping = new UserShipping();
 		model.addAttribute("userShipping", userShipping);
 		List<String> stateList = USConstants.listOfUSStatesCode;
+		List<String> codeList = USConstants.listOfUSStatesName;
 		Collections.sort(stateList);
+		Collections.sort(codeList);
 		model.addAttribute("stateList", stateList);
+		model.addAttribute("codeList", codeList);
 		model.addAttribute("userPaymentList", user.getUserPaymentList());
 		model.addAttribute("userShippingList", user.getUserShippingList());
 		/* model.addAttribute("orderList", user.getorderList()); */
 		
 		return "myProfile";
-		
-		
-		
+	
 	}
 	
 	@RequestMapping(value="/newUser", method = RequestMethod.POST)
