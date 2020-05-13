@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import com.bookstore.domain.User;
 import com.bookstore.domain.UserBilling;
 import com.bookstore.domain.UserPayment;
+import com.bookstore.domain.UserShipping;
 import com.bookstore.domain.security.PasswordResetToken;
 import com.bookstore.domain.security.UserRole;
 import com.bookstore.repository.PasswordResetTokenRepository;
@@ -31,10 +32,10 @@ public class UserServiceImpl implements UserService{
 	private RoleRepository roleRepository;
 	
 	@Autowired
-	private PasswordResetTokenRepository passwordResetTokenRepository;
+	private UserPaymentRepository userPaymentRepository;
 	
 	@Autowired
-	private UserPaymentRepository userPaymentRepository;
+	private PasswordResetTokenRepository passwordResetTokenRepository;
 	
 	@Override
 	public PasswordResetToken getPasswordResetToken(final String token) {
@@ -56,6 +57,7 @@ public class UserServiceImpl implements UserService{
 	public User findByEmail (String email) {
 		return userRepository.findByEmail(email);
 	}
+	
 	@Override
 	public User createUser(User user, Set<UserRole> userRoles){
 		User localUser = userRepository.findByUsername(user.getUsername());
@@ -74,11 +76,12 @@ public class UserServiceImpl implements UserService{
 		
 		return localUser;
 	}
+	
 	@Override
 	public User save(User user) {
 		return userRepository.save(user);
 	}
-
+	
 	@Override
 	public void updateUserBilling(UserBilling userBilling, UserPayment userPayment, User user) {
 		userPayment.setUser(user);
@@ -86,30 +89,30 @@ public class UserServiceImpl implements UserService{
 		userPayment.setDefaultPayment(true);
 		userBilling.setUserPayment(userPayment);
 		user.getUserPaymentList().add(userPayment);
-		
 		save(user);
-		
 	}
-
+	
 	@Override
-	public void setDefaultPayment(Long userPaymentId, User user) {
-		
+	public void updateUserShipping(UserShipping userShipping, User user){
+		userShipping.setUser(user);
+		userShipping.setUserShippingDefault(true);
+		user.getUserShippingList().add(userShipping);
+		save(user);
+	}
+	
+	@Override
+	public void setUserDefaultPayment(Long userPaymentId, User user) {
 		List<UserPayment> userPaymentList = (List<UserPayment>) userPaymentRepository.findAll();
-		
 		
 		for (UserPayment userPayment : userPaymentList) {
 			if(userPayment.getId() == userPaymentId) {
 				userPayment.setDefaultPayment(true);
-				
 				userPaymentRepository.save(userPayment);
-			}else {
+			} else {
 				userPayment.setDefaultPayment(false);
 				userPaymentRepository.save(userPayment);
 			}
 		}
-		
 	}
-	
-	
 
 }
