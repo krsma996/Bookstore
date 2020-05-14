@@ -125,6 +125,9 @@ public class UserShipping {
 	public void setUserShippingDefault(boolean userShippingDefault) {
 		this.userShippingDefault = userShippingDefault;
 	}
+
+
+	
 	
 	
 }
