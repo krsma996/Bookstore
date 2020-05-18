@@ -4,7 +4,7 @@ import com.bookstore.domain.ShoppingCart;
 
 public interface ShoppingCartService {
 
-	void updateShoppingCart(ShoppingCart shoppingCart);
+	ShoppingCart updateShoppingCart(ShoppingCart shoppingCart);
 	
 	
 }

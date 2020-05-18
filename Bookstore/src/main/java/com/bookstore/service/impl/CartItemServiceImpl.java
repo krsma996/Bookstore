@@ -1,5 +1,6 @@
 package com.bookstore.service.impl;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,8 +26,15 @@ public class CartItemServiceImpl implements CartItemService {
 
 
 	@Override
-	public void updateCartItem(CartItem cartItem) {
+	public  CartItem updateCartItem(CartItem cartItem) {
+	   BigDecimal bigDecimal = new BigDecimal(cartItem.getBook().getOurPrice()).multiply(new BigDecimal(cartItem.getQty()));
 	   
+	   bigDecimal = bigDecimal.setScale(2,BigDecimal.ROUND_HALF_UP);
+	   cartItem.setSubtotal(bigDecimal);
+	   
+	   cartItemRepository.save(cartItem);
+	   
+	   return cartItem;
 		
 	}
 

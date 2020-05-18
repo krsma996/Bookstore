@@ -23,7 +23,7 @@ public class ShoppingCartServiceImpl implements ShoppingCartService{
 	
 	
 	@Override
-	public void updateShoppingCart(ShoppingCart shoppingCart) {
+	public ShoppingCart updateShoppingCart(ShoppingCart shoppingCart) {
 		BigDecimal cartTotal = new BigDecimal(0);
 		
 		List<CartItem> cartItemList =  cartItemService.findByShoppingCart(shoppingCart);
@@ -33,13 +33,14 @@ public class ShoppingCartServiceImpl implements ShoppingCartService{
 				cartItemService.updateCartItem(cartItem);
 				cartTotal = cartTotal.add(cartItem.getSubtotal());
 			}
+			
 		}
 		
 		
 		shoppingCart.setGrandTotal(cartTotal);
 		
 		shoppingCartRepository.save(shoppingCart);
-		
+		return shoppingCart;
 		
 		
 		

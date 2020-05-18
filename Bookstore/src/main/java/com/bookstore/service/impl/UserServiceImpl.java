@@ -1,13 +1,17 @@
 package com.bookstore.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
+
+import javax.transaction.Transactional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.bookstore.domain.ShoppingCart;
 import com.bookstore.domain.User;
 import com.bookstore.domain.UserBilling;
 import com.bookstore.domain.UserPayment;
@@ -63,6 +67,7 @@ public class UserServiceImpl implements UserService{
 	}
 	
 	@Override
+	@Transactional
 	public User createUser(User user, Set<UserRole> userRoles){
 		User localUser = userRepository.findByUsername(user.getUsername());
 		
@@ -74,6 +79,12 @@ public class UserServiceImpl implements UserService{
 			}
 			
 			user.getUserRoles().addAll(userRoles);
+			ShoppingCart shoppingCart = new ShoppingCart();
+			shoppingCart.setUser(user);
+			user.setShoppingCart(shoppingCart);
+			
+			user.setUserShippingList(new ArrayList<UserShipping>());
+			user.setUserPaymentList(new ArrayList<UserPayment>());
 			
 			localUser = userRepository.save(user);
 		}

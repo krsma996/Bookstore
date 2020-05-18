@@ -28,6 +28,7 @@ public class ShoppingCartController {
     @Autowired
     private ShoppingCartService shoppingCartService;
 	
+    
 
 	@RequestMapping("/cart")
 	public String shoppingCart(Model model,Principal principal) {
@@ -37,8 +38,7 @@ public class ShoppingCartController {
 		List<CartItem> cartItemList = cartItemService.findByShoppingCart(shoppingCart);
 		
 		shoppingCartService.updateShoppingCart(shoppingCart);
-		
-		
+			
 		model.addAttribute("cartItemList",cartItemList);
 		model.addAttribute("shoppingCart",shoppingCart);
 		
