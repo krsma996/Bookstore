@@ -25,56 +25,47 @@ public class ShoppingCartController {
 	@Autowired
 	private UserService userService;
 	
-    @Autowired
-    private CartItemService cartItemService;
-    
-    @Autowired
-    private ShoppingCartService shoppingCartService;
+	@Autowired
+	private CartItemService cartItemService;
 	
-    @Autowired
-    private BookService bookService;
-    
-
+	@Autowired
+	private BookService bookService;
+	
+	@Autowired
+	private ShoppingCartService shoppingCartService;
+	
 	@RequestMapping("/cart")
-	public String shoppingCart(Model model,Principal principal) {
+	public String shoppingCart(Model model, Principal principal) {
 		User user = userService.findByUsername(principal.getName());
 		ShoppingCart shoppingCart = user.getShoppingCart();
 		
 		List<CartItem> cartItemList = cartItemService.findByShoppingCart(shoppingCart);
 		
 		shoppingCartService.updateShoppingCart(shoppingCart);
-			
-		model.addAttribute("cartItemList",cartItemList);
-		model.addAttribute("shoppingCart",shoppingCart);
+		
+		model.addAttribute("cartItemList", cartItemList);
+		model.addAttribute("shoppingCart", shoppingCart);
 		
 		return "shoppingCart";
-		
 	}
-	
-	
+
 	@RequestMapping("/addItem")
 	public String addItem(
 			@ModelAttribute("book") Book book,
 			@ModelAttribute("qty") String qty,
-			Model model,Principal principal
-			
+			Model model, Principal principal
 			) {
 		User user = userService.findByUsername(principal.getName());
 		book = bookService.findOne(book.getId());
 		
-		
-		if(Integer.parseInt(qty)> book.getInStockNumber()) {
+		if (Integer.parseInt(qty) > book.getInStockNumber()) {
 			model.addAttribute("notEnoughStock", true);
-			return  "forward:/bookDetail?id="+book.getId();
-			//retrive a template name 
-			
+			return "forward:/bookDetail?id="+book.getId();
 		}
 		
-		CartItem caretItem = cartItemService.addBookToCartItem(book,user,Integer.parseInt(qty));
+		CartItem cartItem = cartItemService.addBookToCartItem(book, user, Integer.parseInt(qty));
 		model.addAttribute("addBookSuccess", true);
 		
 		return "forward:/bookDetail?id="+book.getId();
-		
 	}
-	
 }
