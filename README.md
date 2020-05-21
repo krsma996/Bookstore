@@ -20,6 +20,7 @@ Check my adminportal page for booksotre in order to add,delete,update books from
 Username:admin
 
 Password:admin
-Link : https://github.com/NikolaKrsmanovic1996/adminportal
+
+Link: https://github.com/NikolaKrsmanovic1996/adminportal
 
 Enjoy Shopping ! :D
