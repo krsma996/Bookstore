@@ -17,9 +17,9 @@ After you done that you can order any book from ComicBook Store.
 --------------
 Check my adminportal page for booksotre in order to add,delete,update books from bookstore.
 
-Username:admin
+Username:  admin
 
-Password:admin
+Password:  admin
 
 Link: https://github.com/NikolaKrsmanovic1996/adminportal
 
