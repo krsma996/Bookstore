@@ -365,9 +365,90 @@
 							</div>
 						</div>
 						<!-- 3. Review Items Shipping -->
-					</div>
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+									<a data-toggle="collapse" data-parent="#accordion"
+										href="#reviewItems"> 3. Review Items and Shipping </a>
+								</h4>
+							</div>
+							<div id="reviewItems" class="panel-collapse collapse">
+								<div class="panel-body">
+									<h4>Choose your shipping method:</h4>
+									<div class="radio">
 
-				</div>
+										<label> <input type="radio" name="shippingMethod"
+											value="groundShipping" checked="checked" /> Ground Shipping
+										</label>
+									</div>
+									<div class="radio">
+										<label> <input type="radio" name="shippingMethod"
+											value="premiumShipping" /> Premium Shipping
+										</label>
+									</div>
+									<div class="row">
+										<div class="col-xs-8">
+											<h4>Products</h4>
+										</div>
+										<div class="col-xs-2">
+											<h4>Price</h4>
+										</div>
+										<div class="col-xs-2">
+											<h4>Qty</h4>
+										</div>
+									</div>
+									<!-- 	 Display products in cart -->
+									<div class="row" th:each="cartItem : ${cartItemList}">
+										
+											<hr />
+											<div class="col-xs-2">
+												<a th:href="@{/bookDetail(id=${cartItem.book.id})}"> <img
+													class="img-responsive shelf-book"
+													th:src="#{adminPath}+@{/image/book}+${cartItem.book.id}+ '.png'"
+													style="width: 70px;">
+												</a>
+											</div>
+											<div class="col-xs-6">
+												<div style="margin-left: 50px;">
+													<a th:href="@{/bookDetail?id=}+${cartItem.book.id}"><h4
+															th:text="${cartItem.book.title}"></h4></a>
+													<p th:if="${cartItem.book.inStockNumber&gt;10}"
+														style="color: green;">In Stock</p>
+													<p
+														th:if="${cartItem.book.inStockNumber&lt;10 and cartItem.book.inStockNumber&gt;0}"
+														style="color: green;">
+														Only <span th:text="${cartItem.book.inStockNumber}"></span>
+														In Stock
+													</p>
+													<p th:if="${cartItem.book.inStockNumber==0}"
+														style="color: darkred;">Product Unavailable</p>
+													<a th:href="@{/shoppingCart/removeItem?id=}+${cartItem.id}">delete</a>
+												</div>
+											</div>
+
+											<div class="col-xs-2">
+												<h5 style="font-size: large;" th:text="${cartItem.qty}"></h5>
+											</div>
+										
+									</div>
+									<hr />
+									<h4 class="col-xs-12 text-right">
+										<strong style="font-size: large;">Order Total (<span
+											th:text="${#lists.size(cartItemList)}"></span> items):
+										</strong> <span style="color: #db3208; font-szie: large;">$<span
+											th:text="${shoppingCart.grandTotal}"></span></span>
+									</h4>
+									<br/><br/>
+									<button type="submit" class="btn btn-warning btn-block"> Place your order</button>
+									<p style="font-size: small;">
+								By placing your order,you agree to ComicBook Store <a href="#">Privacy</a>
+								Notice and<a href="#">Conditions</a>of use.
+							</p>
+								</div>
+							</div>
+						</div>
+
+					</div>
 			</form>
 		</div>
 
