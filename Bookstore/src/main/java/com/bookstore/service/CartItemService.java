@@ -1,4 +1,4 @@
-package com.bookstore.service;
+	package com.bookstore.service;
 
 import java.util.List;
 
@@ -22,6 +22,8 @@ public interface CartItemService {
 	CartItem findById(Long id);
 
     void removeCartItem(CartItem cartItem);
+    
+    CartItem save(CartItem cartItem);
 	
 	
 	
