@@ -22,6 +22,8 @@ public interface UserService {
 	
 	User save(User user);
 	
+	User findById(Long id);
+	
 	void updateUserBilling(UserBilling userBilling, UserPayment userPayment, User user);
 	
 	void updateUserShipping(UserShipping userShipping, User user);
