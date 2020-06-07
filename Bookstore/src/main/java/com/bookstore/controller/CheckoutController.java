@@ -153,15 +153,17 @@ public class CheckoutController {
 
 		List<CartItem> cartItemList = cartItemService.findByShoppingCart(shoppingCart);
 		model.addAttribute("cartItemList", cartItemList);
+
 		if (billingSameAsShipping.equals("true")) {
 			billingAddress.setBillingAddressName(shippingAddress.getShippingAddressName());
 			billingAddress.setBillingAddressStreet1(shippingAddress.getShippingAddressStreet1());
 			billingAddress.setBillingAddressStreet2(shippingAddress.getShippingAddressStreet2());
 			billingAddress.setBillingAddressCity(shippingAddress.getShippingAddressCity());
-			billingAddress.setBillingAddressCountry(shippingAddress.getShippingAddressState());
-			billingAddress.setBillingAddressZipcode(shippingAddress.getShippingAddressCountry());
+			billingAddress.setBillingAddressState(shippingAddress.getShippingAddressState());
+			billingAddress.setBillingAddressCountry(shippingAddress.getShippingAddressCountry());
 			billingAddress.setBillingAddressZipcode(shippingAddress.getShippingAddressZipcode());
 		}
+
 		if (shippingAddress.getShippingAddressStreet1().isEmpty() || shippingAddress.getShippingAddressCity().isEmpty()
 				|| shippingAddress.getShippingAddressState().isEmpty()
 				|| shippingAddress.getShippingAddressName().isEmpty()
@@ -170,32 +172,28 @@ public class CheckoutController {
 				|| billingAddress.getBillingAddressCity().isEmpty() || billingAddress.getBillingAddressState().isEmpty()
 				|| billingAddress.getBillingAddressName().isEmpty()
 				|| billingAddress.getBillingAddressZipcode().isEmpty())
-			
-			return "redirect/checkout?id=" + shoppingCart.getId() + "&missingRequiredField=true";
+			return "redirect:/checkout?id=" + shoppingCart.getId() + "&missingRequiredField=true";
 		
 		User user = userService.findByUsername(principal.getName());
-		Order order = orderService.createOrder(shoppingCart,shippingAddress,billingAddress,payment,shippingMethod,user);
 		
-		mailSender.send(mailConstructor.constructOrderConfirmationEmail(user,order,Locale.ENGLISH));
+		Order order = orderService.createOrder(shoppingCart, shippingAddress, billingAddress, payment, shippingMethod, user);
+		
+		mailSender.send(mailConstructor.constructOrderConfirmationEmail(user, order, Locale.ENGLISH));
 		
 		shoppingCartService.clearShoppingCart(shoppingCart);
-		
-		
 		
 		LocalDate today = LocalDate.now();
 		LocalDate estimatedDeliveryDate;
 		
-		if(shippingMethod.equals("groundShipping")) {
+		if (shippingMethod.equals("groundShipping")) {
 			estimatedDeliveryDate = today.plusDays(5);
-		}else {
-			estimatedDeliveryDate = today.plusDays(3);	
+		} else {
+			estimatedDeliveryDate = today.plusDays(3);
 		}
 		
-		model.addAttribute("estimatedDeliveryDate",estimatedDeliveryDate);
+		model.addAttribute("estimatedDeliveryDate", estimatedDeliveryDate);
 		
 		return "orderSubmittedPage";
-		
-
 	}
 
 	@RequestMapping("/setShippingAddress")

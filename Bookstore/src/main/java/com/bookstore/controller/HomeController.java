@@ -502,7 +502,7 @@ public class HomeController {
 		currentUser.setLastName(user.getLastName());
 		currentUser.setUsername(user.getUsername());
 		currentUser.setEmail(user.getEmail());
-		currentUser.setPassword(user.getPassword());
+		
 		
 		userService.save(currentUser);
 		
