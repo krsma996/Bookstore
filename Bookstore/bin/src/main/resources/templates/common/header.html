@@ -4,12 +4,17 @@
 <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-<title>Comic Store</title>
+<title>ComicBook Store</title>
 
 <!-- Bootstrap core CSS -->
 <link href="/css/bootstrap.min.css" rel="stylesheet" />
 
 <link href="/css/non-responsive.css" rel="stylesheet" />
+
+<!-- data table -->
+<link  th:href="@{/css/jquery.dataTables.min.css}" rel="stylesheet" />
+<link  th:href="@{/css/dataTables.bootstrap.min.css}" rel="stylesheet" />
+<link th:href="@{/css/font-awesome.min.css}" rel="stylesheet"/>
 
 <!-- Custom styles for this template -->
 <link href="/css/style.css" rel="stylesheet" />
@@ -25,15 +30,15 @@
 		<nav class="navbar navbar-default navbar-inverse">
 			<div class="container-fluid">
 				<div class="navbar-header">
-					<a class="navbar-brand" href="../index.html">Comic Store</a>
+					<a class="navbar-brand" th:href="@{/}">Comic Book Store</a>
 				</div>
 				<div id="navbar">
 					<ul class="nav navbar-nav navbar-left">
-						<li class="dropdown"><a href="#" class="dropdown-toggle"
+						<li class="dropdown"><a th:href="@{/bookshelf}" class="dropdown-toggle"
 							data-toggle="dropdown" role="button" aria-haspopup="true"
 							aria-expanded="false">BOOKS <span class="caret"></span></a>
 							<ul class="dropdown-menu">
-								<li><a href="#">Browse the bookshelf</a></li>
+								<li><a th:href="@{/bookshelf}">Browse the bookshelf</a></li>
 								<li><a href="#">Store hours &#38; Directions</a></li>
 								<li><a href="#">FAQ</a></li>
 
@@ -47,9 +52,10 @@
 						</form>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
-						<li><a href="#">SHOPPING CART</a></li>
-						<li><a th:href="@{/login}">MY ACCOUNT</a></li>
-						<li><a href="#">LOGOUT</a></li>
+						<li><a th:href="@{/shoppingCart/cart}">SHOPPING CART</a></li>
+						<li><a sec:authorize="isAnonymous()" th:href="@{/login}">MY ACCOUNT</a></li>
+						<li><a sec:authorize="isAuthenticated()" th:href="@{/myProfile}">MY ACCOUNT</a></li>
+						<li><a sec:authorize="isAuthenticated()" th:href="@{/logout}">LOGOUT</a></li>
 					</ul>
 				</div>
 				<!--/.nav-collapse -->
@@ -59,9 +65,14 @@
 	</div>
 	
 	<div th:fragment="body-bottom-scripts">
-	<script
-		src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-	<script src="/js/bootstrap.min.js"></script>
+	<script th:src="@{/js/jquery.min.js}"></script>
+	<script th:src="@{/js/bootstrap.min.js}"></script>
+	<script th:src="@{/js/scripts.js}"></script>
+	
+	<!-- data table -->
+		<script th:src="@{/js/jquery.dataTables.min.js}"></script>
+		<script th:src="@{/js/dataTables.bootstrap.min.js}"></script>
+		
 	</div>
 </body>
 </html>
