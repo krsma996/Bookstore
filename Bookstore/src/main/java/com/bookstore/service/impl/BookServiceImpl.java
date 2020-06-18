@@ -21,7 +21,14 @@ public class BookServiceImpl implements BookService {
 	
 	@Override
 	public List<Book> findAll() {
-		return (List<Book>) bookRepository.findAll();
+		List<Book> bookList =(List<Book>) bookRepository.findAll();
+		List<Book> activeBookList = new ArrayList<Book>();
+		for (Book book : bookList) {
+			if(book.isActive()) {
+				activeBookList.add(book);
+			}
+		}
+		return activeBookList;
 	}
 
 
@@ -47,6 +54,19 @@ public class BookServiceImpl implements BookService {
 		return activeBookList;
 	}
 	
-	
-
+	@Override
+	public List<Book> blurrySearch(String title){
+		List<Book> bookList = bookRepository.findByTitleContaining(title);
+	List<Book> activeBookList = new ArrayList<Book>();
+		
+		for (Book book : bookList) {
+			if(book.isActive()) {
+				activeBookList.add(book);
+			}
+		}
+		
+		return activeBookList;
+	}
 }
+
+	
