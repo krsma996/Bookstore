@@ -1,48 +1,108 @@
-# Bookstore
+Bookstore Web Application
+Welcome to the Bookstore Web Application, a platform designed for purchasing books and comic books online. This project demonstrates a full-stack web application built with Spring Boot, Thymeleaf, and MySQL, incorporating modern web development practices.
 
+Features
+User Account Management:
+Register a new account with email verification.
+Secure login system.
+Address Management:
+Add and manage multiple shipping and billing addresses.
+Set default addresses for faster checkout.
+Bookstore Functionality:
+Browse books and view detailed information.
+Add books to your shopping cart.
+Update or remove items from the cart.
+Proceed through a seamless checkout process.
+Order Management:
+Place orders with custom billing and shipping addresses.
+Receive order confirmation via email.
+View order history on the "My Account" page.
+Admin Portal:
+Manage the bookstore inventory with features to add, update, or delete books.
+Technologies Used
+Backend: Spring Boot, Hibernate
+Frontend: Thymeleaf, Bootstrap 3.4, HTML, CSS, JavaScript (jQuery)
+Database: MySQL
+Email Service: JavaMailSender
+Tools: Spring Tool Suite (STS) 4, Eclipse
+Setup Instructions
+Prerequisites
+Install MySQL and ensure it's running.
+Install Spring Tool Suite (STS) or Eclipse.
+Clone this repository.
+bash
+Copy code
+git clone https://github.com/NikolaKrsmanovic1996/bookstore.git
+Import the project into your IDE.
+Configuration
+Database Setup:
 
-Bookstore or Comicbook store web application here.
--------------------------------------------------
-I used thymeleaf, Mysql, SpringToolSuite(3.9 version)
-In order to run this app you must got installed Mysql into your computer and Install spring tool suite or Eclipse but you need to find jar files for Spring or creating new xml file in eclipse then copy paste from project dependenices. 
+Create a database in MySQL (e.g., bookstore).
+Update the application.properties file in the src/main/resources folder with your MySQL credentials:
+properties
+Copy code
+spring.datasource.url=jdbc:mysql://localhost:3306/bookstore
+spring.datasource.username=YOUR_USERNAME
+spring.datasource.password=YOUR_PASSWORD
+spring.jpa.hibernate.ddl-auto=update
+Email Configuration:
 
-After you downloaded Mysql and Eclipse or SpringToolSuite 
--------------------------------------------------------------------
--First you need to run bookstore for creating tables in mysql then restart.
+Update the email settings in the application.properties file for sending activation and order confirmation emails.
+properties
+Copy code
+spring.mail.host=smtp.gmail.com
+spring.mail.port=587
+spring.mail.username=YOUR_EMAIL
+spring.mail.password=YOUR_PASSWORD
+spring.mail.properties.mail.smtp.auth=true
+spring.mail.properties.mail.smtp.starttls.enable=true
+Run the Application:
 
--After you come to index page go to My Account page create your account, after that go to your email for activation link and click on that.
+Start the application using your IDE or via the terminal:
+bash
+Copy code
+mvn spring-boot:run
+This will initialize the required database tables.
+Access the Application:
 
--Then go to Shipping page to add your shipping Address and Billing Address and set them as default by checking on them.
+Navigate to http://localhost:8080 in your browser.
+Usage Guide
+For Users:
+Create an Account:
+Go to the "My Account" page and register.
+Check your email for an activation link and activate your account.
+Set Up Addresses:
+Navigate to the "Shipping" page to add billing and shipping addresses.
+Mark default addresses for easier checkout.
+Browse Books:
+Go to the "Bookshelf" page, select a book, and view its details.
+Add the desired quantity to your cart.
+Manage Your Cart:
+View your cart, update quantities, or remove items.
+Proceed to checkout.
+Place an Order:
+Set your billing and shipping details during checkout.
+Confirm payment and place your order.
+Receive a confirmation email with order details and delivery date.
+Track Orders:
+View your order history in the "My Account" section.
+For Admins:
+Access the Admin Portal:
+Admin Portal Repository
+Credentials:
+Username: admin
+Password: admin
+Manage Inventory:
+Add, update, or delete books in the store.
+Future Improvements
+Integration with payment gateways for seamless transactions.
+Enhanced search and filtering options for books.
+Responsive design upgrades with Bootstrap 5.
+REST API implementation for better frontend-backend separation.
+Contributing
+Contributions are welcome! Feel free to fork the repository and submit a pull request with your enhancements or bug fixes.
 
--After you done that you can order any book from ComicBook Store.
+License
+This project is licensed under the MIT License.
 
--If you want to order a book from page you need to go on header Browse Bookshelf click on any book it will redirect you to bookDetail page after that selecy Qty(quantity) how many of books you want click on add to cart button.
-
--After that go on shoppingCart.html you will see that you have added in your cart your book you can update delete book on that page and update Qty by just hovering the mouse over empty field it will pop out button for update qty.
--Then click on checkout button upper for checking all books that you want, you will see new page for orderSubmitPage set your billing --
-
--Address and shippingAddress payment Method and finally click on button place your order.
-
--After that it will say a pop out messeage that order was succsessfull it will show you time and date of delivering and you can go on My 
-
--Accont page click on order to check your order OR you can go on your email to check your orderConfirmationEmail message.
-
-That's all :)
-
-
-All technologies that i used
------------------------------
--MySql,Bootstrap V3.4,Spring Tool Suite(4.0.0),Thymeleaf,Html,Css,basic JavaScript(JQUery), Interfaces,Contorllers,WebService(ServiceConfig), JavaMailSender,Hibernate.
-
-
-#Note
---------------
-Check my adminportal page for booksotre in order to add,delete,update books from bookstore.
-
-Username:  admin
-
-Password:  admin
-
-Link: https://github.com/NikolaKrsmanovic1996/adminportal
-
-Enjoy Shopping ! :D
+Enjoy your shopping experience and feel free to explore the code! 😊
